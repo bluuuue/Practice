@@ -9,6 +9,7 @@ struct node
 	node *next;
 };
 
+
 node *create();
 void showList(node *head);
 
