@@ -18,15 +18,15 @@ int main()
 	char flag = 'c';
 	while(flag == 'c')
 	{
-		cout << "抽水井中水位降深S(m)：" << endl;
+		cout << "S(m):" << endl;
 		cin >> S;
-		cout << "过滤器长度L(m)：" << endl;
+		cout << "L(m):" << endl;
 		cin >> L;
-		cout << "抽水井流量Q(m3/d)：" << endl;
+		cout << "Q(m3/d):" << endl;
 		cin >> Q;
-		cout << "承压含水层厚度M(m)：" << endl;
+		cout << "M(m):" << endl;
 		cin >> M;
-		cout << "抽水井半径r(m)：" << endl;
+		cout << "r(m):" << endl;
 		cin >> r;
 
 		if (M<=L)
@@ -49,13 +49,13 @@ int main()
 
 		}
 		
-		cout << endl << "结果：" << endl;
-		cout << "  渗透系数K(m/d)：" << K << endl;
-		cout << "  影响半径R(m)：" << R << endl << endl;
+		cout << endl << "Result: " << endl;
+		cout << "  K(m/d): " << K << endl;
+		cout << "  R(m):   " << R << endl << endl;
 
-		cout << "继续请输入“c”，否则输入其他字符：" << endl;
-		scanf("%c",&flag);
-		flag = getchar();
+		cout << "Enter 'c' to continue, or anyelse char to end: " << endl;
+		cin >> flag;
+		//flag = getchar();
 		cout << endl;
 	}
 
