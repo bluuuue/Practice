@@ -10,7 +10,7 @@ int numberOf1(int n)
 	int count1 = 0;
 	while(flag)
 	{
-		if(n & flag)
+		if((n & flag) > 0)
 		{
 			++count1;
 		}
