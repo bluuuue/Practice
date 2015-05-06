@@ -2,10 +2,10 @@
 
 int numberOf1(int n)
 {
-//	if(n < 0)
-//	{
-//		n = 0 - n;
-//	}
+	if(n < 0)
+	{
+		n = 0 - n;
+	}
 	unsigned int flag = 1;
 	int count1 = 0;
 	while(flag)
