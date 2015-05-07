@@ -7,4 +7,27 @@ public:
 
 	Queue& operator=(const Queue&);
 	~Queue() {destroy(); }
-	
+
+	Type& front()
+	{
+		return head->item;
+	}
+	const Type &front() const
+	{
+		return head->item;
+	}
+	void push(const Type &);
+	void pop();
+	bool empty() const 
+	{
+		return headd == 0;
+	}
+
+
+private:
+	QueueItem<Type> *head;
+	QueueItem<Type> *tail;
+
+	void destroy();
+	void copy_elems(const Queue&);
+};
