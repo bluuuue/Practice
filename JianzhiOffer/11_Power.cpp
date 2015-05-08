@@ -45,7 +45,7 @@ double Power(double base, int exponent)
 	return dResult;
 }
 
-double PowerFaster(double base, int exponent)
+double PowerWithUnsignedExponent(double base, unsigned int exponent)
 {
 	if(exponent == 0)
 	{return 1;}
@@ -53,11 +53,34 @@ double PowerFaster(double base, int exponent)
 	if(exponent == 1)
 	{return base;}
 
-	double dResult = PowerFaster(base, exponent >> 1);
+	double dResult = PowerWithUnsignedExponent(base, exponent >> 1);
 	dResult *= dResult;
 
 	if(exponent & 0x1 == 1)
 	{dResult *= base;}
+
+	return dResult;
+}
+
+double PowerFaster(double base, int exponent)
+{
+	if( equal(base, 0.0) && exponent <= 0)
+	{
+		g_InvalidInput = true;
+		return 0;
+	}
+
+	if(exponent < 0)
+	{
+		exponent = 0 - exponent;
+	}
+
+	double dResult = PowerWithUnsignedExponent(base, exponent);
+
+	if(exponent < 0)
+	{
+		dResult = 1 /  dResult;
+	}
 
 	return dResult;
 }
@@ -80,31 +103,31 @@ int main()
 	clock_t start, finish1, finish2;
 	start = clock();
 	std::cout << Power(0,0) << std::endl;
-	std::cout << Power(0,-2) << std::endl;
-	std::cout << Power(0,2) << std::endl;
-	std::cout << Power(-10,2) << std::endl;
-	std::cout << Power(-10,3) << std::endl;
+	std::cout << Power(0,-22) << std::endl;
+	std::cout << Power(0,22) << std::endl;
+	std::cout << Power(-10,22) << std::endl;
+	std::cout << Power(-10,32) << std::endl;
 	std::cout << Power(-10,0) << std::endl;
-	std::cout << Power(-10,-2) << std::endl;
-	std::cout << Power(-10,-3) << std::endl;
-	std::cout << Power(10,2) << std::endl;
+	std::cout << Power(-10,-22) << std::endl;
+	std::cout << Power(-10,-32) << std::endl;
+	std::cout << Power(10,22) << std::endl;
 	std::cout << Power(10,0) << std::endl;
-	std::cout << Power(10,-2) << std::endl;
+	std::cout << Power(10,-22) << std::endl;
 	finish1 = clock();
-	std::cout << static_cast<double>(finish1 - start) << std::endl;
+	std::cout << "Time: " << static_cast<double>(finish1 - start) << std::endl;
 	start = clock();
 	std::cout << PowerFaster(0,0) << std::endl;
-	std::cout << PowerFaster(0,-2) << std::endl;
-	std::cout << PowerFaster(0,2) << std::endl;
-	std::cout << PowerFaster(-10,2) << std::endl;
-	std::cout << PowerFaster(-10,3) << std::endl;
+	std::cout << PowerFaster(0,-22) << std::endl;
+	std::cout << PowerFaster(0,22) << std::endl;
+	std::cout << PowerFaster(-10,22) << std::endl;
+	std::cout << PowerFaster(-10,32) << std::endl;
 	std::cout << PowerFaster(-10,0) << std::endl;
-	std::cout << PowerFaster(-10,-2) << std::endl;
-	std::cout << PowerFaster(-10,-3) << std::endl;
-	std::cout << PowerFaster(10,2) << std::endl;
+	std::cout << PowerFaster(-10,-22) << std::endl;
+	std::cout << PowerFaster(-10,-32) << std::endl;
+	std::cout << PowerFaster(10,22) << std::endl;
 	std::cout << PowerFaster(10,0) << std::endl;
-	std::cout << PowerFaster(10,-2) << std::endl;
+	std::cout << PowerFaster(10,-22) << std::endl;
 	finish2 = clock();
-	std::cout << static_cast<double>(finish2 - start) << std::endl;
+	std::cout << "Time: " << static_cast<double>(finish2 - start) << std::endl;
 	return 0;
 }
