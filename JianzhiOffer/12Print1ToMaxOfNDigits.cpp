@@ -26,10 +26,31 @@ bool Increment(char *number)
 	for(int i = nLength - 1; i >= 0; --i)
 	{
 		int nSum = number[i] - '0' + nTakeOver;
-		if(i == nLength
+		if(i == nLength - 1)
+		{
+			++nSum;
+		}
+
+		if(nSum >= 10)
+		{
+			if(i == 0)
+			{
+				bIsOverflow = true;
+			}
+			else
+			{
+				nTakeOver = 1;
+				nSum -= 10;
+				number[i] = '0' + nSum;
+			}
+		}
+		else
+		{
+			number[i] = '0' + nSum;
+			break;
+		}
 	}
 
-	bIsOverflow = true;
 	return bIsOverflow;
 }
 
