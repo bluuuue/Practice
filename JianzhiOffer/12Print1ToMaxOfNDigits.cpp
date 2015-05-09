@@ -22,7 +22,6 @@ bool Increment(char *number)
 	bool bIsOverflow = false;
 	int nTakeOver = 0;
 	int nLength = strlen(number);
-	std::cout << "nLength: " << nLength << std::endl;
 	for(int i = nLength - 1; i >= 0; --i)
 	{
 		int nSum = number[i] - '0' + nTakeOver;
@@ -56,6 +55,22 @@ bool Increment(char *number)
 
 void PrintNumber(char *number)
 {
+	bool bIsBeginning0 = true;
+	int nLength = strlen(number);
+
+	for(int i = 0; i < nLength; ++i)
+	{
+		if(bIsBeginning0 && number[i] != '0')
+		{
+			bIsBeginning0 = false;
+		}
+
+		if(!bIsBeginning0)
+		{
+			printf("%c", number[i]);
+		}
+	}
+	printf("\t");
 }
 
 void Print1ToMaxOfNDigits(int n)
@@ -79,8 +94,8 @@ void Print1ToMaxOfNDigits(int n)
 
 int main()
 {
-	Print1ToMaxOfNDigits_1(4);
-	Print1ToMaxOfNDigits(4);
+	//Print1ToMaxOfNDigits_1(4);
+	Print1ToMaxOfNDigits(17);
 
 	return 0;
 }
