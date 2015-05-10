@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 struct ListNode
 {
@@ -60,24 +61,69 @@ void PrintListReversingly_Recursively(ListNode* pHead)
 		{
 			PrintListReversingly_Recursively(pHead->m_pNext);
 		}
-		printf("%d\t", pHead->m_nValue);
+		printf("%d\n", pHead->m_nValue);
 	}
 }
 
 void DeleteNode(ListNode **pListHead, ListNode *pToBeDeleted)
 {
+	if(!pListHead || !pToBeDeleted)
+	{
+		return;
+	}
 
+	//The node to be deleted is not the tail node.
+	if(pToBeDeleted->m_pNext != NULL)
+	{
+		pToBeDeleted->m_nValue = pToBeDeleted->m_pNext->m_nValue;
+		pToBeDeleted->m_pNext = pToBeDeleted->m_pNext->m_pNext;
+	}
+	//The list has only one node.
+	else if(*pListHead == pToBeDeleted)
+	{
+		*pListHead = NULL;
+		delete pToBeDeleted;
+		pToBeDeleted = NULL;
+	}
+	//The list has more than one node, the node to be deleted is the tail node.
+	else
+	{
+		ListNode *pIndex = *pListHead;
+		while(pIndex->m_pNext != pToBeDeleted)
+		{
+			pIndex = pIndex->m_pNext;
+		}
+		pIndex->m_pNext = NULL;
+		delete pToBeDeleted;
+		pToBeDeleted = NULL;
+	}
 }
 
 int main()
 {
-	ListNode *list = NULL;
-	for (int i = 1; i <= 10; ++i)
+	cout << endl;
+	ListNode **pHead;
+	*pHead = NULL;
+	for(int i = 0; i != 10; ++i)
 	{
-		list = AddElement(i, list);
+		AddTOTail(pHead, i);
 	}
-
-	PrintListReversingly_Recursively(list);
+	//std::cout << "The old linked list: " << std::endl;
+	PrintListReversingly_Recursively(*pHead);
+	printf("\n");
+/*	
+	ListNode *pToBeDeleted = *pHead;
+	int nNodeToBeDeletedNum = 5;
+	while(--nNodeToBeDeletedNum)
+	{
+		pToBeDeleted = pToBeDeleted->m_pNext;
+	}
+	DeleteNode(pHead, pToBeDeleted);
+	//std::cout << "The new linked list: " << std::endl;
+	PrintListReversingly_Recursively(*pHead);
+	//std::cout << std::endl;
+	*/
+	
 
 	return 0;
 }
