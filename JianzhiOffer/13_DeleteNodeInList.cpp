@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
 struct ListNode
@@ -101,17 +102,18 @@ void DeleteNode(ListNode **pListHead, ListNode *pToBeDeleted)
 
 int main()
 {
-	cout << endl;
-	ListNode **pHead;
+	
+	ListNode **pHead = new ListNode *();
 	*pHead = NULL;
 	for(int i = 0; i != 10; ++i)
 	{
 		AddTOTail(pHead, i);
 	}
-	//std::cout << "The old linked list: " << std::endl;
+	std::cout << "The old linked list: " << std::endl;
 	PrintListReversingly_Recursively(*pHead);
+	cout << endl;
 	printf("\n");
-/*	
+
 	ListNode *pToBeDeleted = *pHead;
 	int nNodeToBeDeletedNum = 5;
 	while(--nNodeToBeDeletedNum)
@@ -119,11 +121,9 @@ int main()
 		pToBeDeleted = pToBeDeleted->m_pNext;
 	}
 	DeleteNode(pHead, pToBeDeleted);
-	//std::cout << "The new linked list: " << std::endl;
+	std::cout << "The new linked list: " << std::endl;
 	PrintListReversingly_Recursively(*pHead);
-	//std::cout << std::endl;
-	*/
-	
+	std::cout << std::endl;
 
 	return 0;
 }
