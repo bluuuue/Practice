@@ -47,7 +47,6 @@ ListNode* FindKthToTail(ListNode* pListHead, int k)
 		}
 		else
 		{
-			std::cout << "k is longer than list" << std::endl;
 			return NULL;
 		}
 	}
@@ -62,22 +61,6 @@ ListNode* FindKthToTail(ListNode* pListHead, int k)
 	return pBehind;
 }
 
-void PrintLinkedList(ListNode *list)
-{
-	if (list == NULL)
-	{
-		return;
-	}
-	
-	ListNode *index = list;
-	while (index != NULL)
-	{
-		std::cout << index->m_nValue << "\t";
-		index = index->m_pNext;
-	}
-	std::cout << std::endl;
-}
-
 int main()
 {
 	ListNode **pHead = new ListNode*();
@@ -87,11 +70,10 @@ int main()
 		AddTOTail(pHead, i);
 	}
 
-	PrintLinkedList(*pHead);
 	ListNode *pKthNodeToTail;
-	pKthNodeToTail = FindKthToTail(*pHead, 12);
-	PrintLinkedList(pKthNodeToTail);
+	pKthNodeToTail = FindKthToTail(*pHead, 2);
 
 	return 0;
 }
+
 
