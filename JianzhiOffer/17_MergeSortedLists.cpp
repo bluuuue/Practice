@@ -35,7 +35,7 @@ void PrintLinkedList(ListNode *list)
 	{
 		return;
 	}
-	
+
 	ListNode *index = list;
 	while (index != NULL)
 	{
@@ -44,6 +44,65 @@ void PrintLinkedList(ListNode *list)
 	}
 	std::cout << std::endl;
 }
+
+//ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
+//{
+//	if(pHeadA == NULL)
+//	{
+//		return pHeadB;
+//	}
+//	else if(pHeadB == NULL)
+//	{
+//		return pHeadA;
+//	}
+//
+//	ListNode *pMergedList = NULL;
+//	ListNode *pIndex = NULL;
+//	while(pHeadA != NULL || pHeadB != NULL)
+//	{
+//		if (pMergedList != NULL)
+//		{
+//			pMergedList = pMergedList->m_pNext;
+//		}
+//		if(pHeadA == NULL)
+//		{
+//			pMergedList->m_pNext = pHeadB;
+//			break;
+//		}
+//		else if(pHeadB == NULL)
+//		{
+//			pMergedList->m_pNext = pHeadA;
+//			break;
+//		}
+//
+//		if(pHeadA->m_nValue < pHeadB->m_nValue)
+//		{
+//			if(pMergedList == NULL)
+//			{
+//				pMergedList = pHeadA;
+//			}
+//			else
+//			{
+//				pMergedList->m_pNext = pHeadA;
+//			}
+//			pHeadA = pHeadA->m_pNext;
+//		}
+//		else
+//		{
+//			if(pMergedList == NULL)
+//			{
+//				pMergedList = pHeadB;
+//			}
+//			else
+//			{
+//				pMergedList->m_pNext = pHeadB;
+//			}
+//			pHeadB = pHeadB->m_pNext;
+//		}
+//	}
+//
+//	return pMergedList;
+//}
 
 ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
 {
@@ -57,6 +116,7 @@ ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
 	}
 
 	ListNode *pMergedList = NULL;
+	ListNode *pIndex = NULL;
 	while(pHeadA != NULL || pHeadB != NULL)
 	{
 		if(pHeadA == NULL)
@@ -78,7 +138,8 @@ ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
 			}
 			else
 			{
-				pMergedList->m_pNext == pHeadA;
+				pMergedList->m_pNext = pHeadA;
+				pMergedList = pMergedList->m_pNext;
 			}
 			pHeadA = pHeadA->m_pNext;
 		}
@@ -90,7 +151,8 @@ ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
 			}
 			else
 			{
-				pMergedList->m_pNext == pHeadB;
+				pMergedList->m_pNext = pHeadB;
+				pMergedList = pMergedList->m_pNext;
 			}
 			pHeadB = pHeadB->m_pNext;
 		}
@@ -103,15 +165,15 @@ int main()
 {
 	ListNode **pHeadA = new ListNode*();
 	*pHeadA = NULL;
-	for(int i = 0; i != 10; ++i)
+	for(int i = 0; i != 3; ++i)
 	{
-		AddTOTail(pHeadA, i);
+		AddTOTail(pHeadA, i * 2 + 1);
 	}
 	PrintLinkedList(*pHeadA);
 
 	ListNode **pHeadB = new ListNode*();
 	*pHeadB = NULL;
-	for(int i = 0; i != 10; ++i)
+	for(int i = 0; i != 3; ++i)
 	{
 		AddTOTail(pHeadB, i * 2);
 	}
@@ -123,4 +185,5 @@ int main()
 
 	return 0;
 }
+
 
