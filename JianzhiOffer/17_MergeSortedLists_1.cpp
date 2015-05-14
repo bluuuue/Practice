@@ -45,65 +45,6 @@ void PrintLinkedList(ListNode *list)
 	std::cout << std::endl;
 }
 
-//ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
-//{
-//	if(pHeadA == NULL)
-//	{
-//		return pHeadB;
-//	}
-//	else if(pHeadB == NULL)
-//	{
-//		return pHeadA;
-//	}
-//
-//	ListNode *pMergedList = NULL;
-//	ListNode *pIndex = NULL;
-//	while(pHeadA != NULL || pHeadB != NULL)
-//	{
-//		if (pMergedList != NULL)
-//		{
-//			pMergedList = pMergedList->m_pNext;
-//		}
-//		if(pHeadA == NULL)
-//		{
-//			pMergedList->m_pNext = pHeadB;
-//			break;
-//		}
-//		else if(pHeadB == NULL)
-//		{
-//			pMergedList->m_pNext = pHeadA;
-//			break;
-//		}
-//
-//		if(pHeadA->m_nValue < pHeadB->m_nValue)
-//		{
-//			if(pMergedList == NULL)
-//			{
-//				pMergedList = pHeadA;
-//			}
-//			else
-//			{
-//				pMergedList->m_pNext = pHeadA;
-//			}
-//			pHeadA = pHeadA->m_pNext;
-//		}
-//		else
-//		{
-//			if(pMergedList == NULL)
-//			{
-//				pMergedList = pHeadB;
-//			}
-//			else
-//			{
-//				pMergedList->m_pNext = pHeadB;
-//			}
-//			pHeadB = pHeadB->m_pNext;
-//		}
-//	}
-//
-//	return pMergedList;
-//}
-
 ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
 {
 	if(pHeadA == NULL)
@@ -121,38 +62,40 @@ ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
 	{
 		if(pHeadA == NULL)
 		{
-			pMergedList->m_pNext = pHeadB;
+			pIndex->m_pNext = pHeadB;
 			break;
 		}
 		else if(pHeadB == NULL)
 		{
-			pMergedList->m_pNext = pHeadA;
+			pIndex->m_pNext = pHeadA;
 			break;
 		}
 
 		if(pHeadA->m_nValue < pHeadB->m_nValue)
 		{
-			if(pMergedList == NULL)
+			if(pIndex == NULL)
 			{
+				pIndex = pHeadA;
 				pMergedList = pHeadA;
 			}
 			else
 			{
-				pMergedList->m_pNext = pHeadA;
-				pMergedList = pMergedList->m_pNext;
+				pIndex->m_pNext = pHeadA;
+				pIndex = pIndex->m_pNext;
 			}
 			pHeadA = pHeadA->m_pNext;
 		}
 		else
 		{
-			if(pMergedList == NULL)
+			if(pIndex == NULL)
 			{
+				pIndex = pHeadB;
 				pMergedList = pHeadB;
 			}
 			else
 			{
-				pMergedList->m_pNext = pHeadB;
-				pMergedList = pMergedList->m_pNext;
+				pIndex->m_pNext = pHeadB;
+				pIndex = pIndex->m_pNext;
 			}
 			pHeadB = pHeadB->m_pNext;
 		}
@@ -173,7 +116,7 @@ int main()
 
 	ListNode **pHeadB = new ListNode*();
 	*pHeadB = NULL;
-	for(int i = 0; i != 3; ++i)
+	for(int i = 0; i != 8; ++i)
 	{
 		AddTOTail(pHeadB, i * 2);
 	}
@@ -185,5 +128,4 @@ int main()
 
 	return 0;
 }
-
 

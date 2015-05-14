@@ -35,7 +35,7 @@ void PrintLinkedList(ListNode *list)
 	{
 		return;
 	}
-	
+
 	ListNode *index = list;
 	while (index != NULL)
 	{
@@ -57,43 +57,15 @@ ListNode *MergeLists(ListNode *pHeadA, ListNode *pHeadB)
 	}
 
 	ListNode *pMergedList = NULL;
-	while(pHeadA != NULL || pHeadB != NULL)
+	if(pHeadA->m_nValue < pHeadB->m_nValue)
 	{
-		if(pHeadA == NULL)
-		{
-			pMergedList->m_pNext = pHeadB;
-			break;
-		}
-		else if(pHeadB == NULL)
-		{
-			pMergedList->m_pNext = pHeadA;
-			break;
-		}
-
-		if(pHeadA->m_nValue < pHeadB->m_nValue)
-		{
-			if(pMergedList == NULL)
-			{
-				pMergedList = pHeadA;
-			}
-			else
-			{
-				pMergedList->m_pNext == pHeadA;
-			}
-			pHeadA = pHeadA->m_pNext;
-		}
-		else
-		{
-			if(pMergedList == NULL)
-			{
-				pMergedList = pHeadB;
-			}
-			else
-			{
-				pMergedList->m_pNext == pHeadB;
-			}
-			pHeadB = pHeadB->m_pNext;
-		}
+		pMergedList = pHeadA;
+		pMergedList->m_pNext = MergeLists(pHeadA->m_pNext, pHeadB);
+	}
+	else
+	{
+		pMergedList = pHeadB;
+		pMergedList->m_pNext = MergeLists(pHeadA, pHeadB->m_pNext);
 	}
 
 	return pMergedList;
@@ -103,15 +75,15 @@ int main()
 {
 	ListNode **pHeadA = new ListNode*();
 	*pHeadA = NULL;
-	for(int i = 0; i != 10; ++i)
+	for(int i = 0; i != 3; ++i)
 	{
-		AddTOTail(pHeadA, i);
+		AddTOTail(pHeadA, i * 2 + 1);
 	}
 	PrintLinkedList(*pHeadA);
 
 	ListNode **pHeadB = new ListNode*();
 	*pHeadB = NULL;
-	for(int i = 0; i != 10; ++i)
+	for(int i = 0; i != 8; ++i)
 	{
 		AddTOTail(pHeadB, i * 2);
 	}
