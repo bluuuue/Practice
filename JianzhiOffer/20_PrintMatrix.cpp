@@ -1,6 +1,6 @@
 #include <iostream>
 
-void InitMatrix(int numbers[][4], int row, int col)
+void InitMatrix(int **numbers, int row, int col)
 {
 	for(int nRowSeries = 0; nRowSeries < row; ++nRowSeries)
 	{
@@ -22,13 +22,44 @@ void PrintMatrix(int **numbers, int row, int col)
 	}
 }
 
-void PrintMatrixInCircle(int **numbers, int row, int col)
+void PrintMatrixInCircle(int **numbers, int row, int col, int start)
 {
+	int nEndCol = col - start - 1;
+	int nEndRow = row - start - 1;
+
+	for(int nColSeries = start; nColSeries <= nEndCol; ++nColSeries)
+	{
+		std::cout << *((int*)(numbers) + col * start + nColSeries) << "\t";
+	}
+
+	if(start < nEndRow)
+	{
+		for (int nRowSeries = start + 1; nRowSeries <= nEndRow; ++nRowSeries)
+		{
+			std::cout << *((int*)(numbers) + nRowSeries * col + nEndCol) << "\t";
+		}
+	}
+
+	if (start < nEndRow && start < nEndCol)
+	{
+		for (int nColSeries = nEndCol - 1; nColSeries >= start; --nColSeries)
+		{
+			std::cout << *((int*)(numbers) + nEndRow * col + nColSeries) << "\t";
+		}
+	}
+
+	if (start < nEndRow - 1 && start < nEndCol)
+	{
+		for (int nRowSeries = nEndRow - 1; nRowSeries >= start + 1; --nRowSeries)
+		{
+			std::cout << *((int*)(numbers) + nRowSeries * col + start) << "\t";
+		}
+	}
 }
 
 void PrintMatrixClockwisely(int **numbers, int row, int col)
 {
-	if(numbers == NULL)
+	if(numbers == NULL || row <= 0 || col <= 0)
 	{
 		return;
 	}
@@ -36,20 +67,20 @@ void PrintMatrixClockwisely(int **numbers, int row, int col)
 	int start = 0;
 	while(start * 2 < row && start * 2 < col)
 	{
-
+		PrintMatrixInCircle(numbers, row, col, start);
+		++start;
 	}
+	std::cout << std::endl;
 }
 
 int main()
 {
-	int numbers[3][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
-	InitMatrix(numbers, 3, 4);
-	PrintMatrix((int**)numbers, 3, 4);
+	int numbers2[5][7] = {0};
+	InitMatrix((int**)numbers2, 5, 7);
+	PrintMatrix((int**)numbers2, 5, 7);
+	std::cout << std::endl;
 
-	int numbers2[5][4] = {0};
-	InitMatrix(numbers2, 5, 4);
-	PrintMatrix((int**)numbers2, 5, 4);
+	PrintMatrixClockwisely((int**)numbers2, 5, 7);
 
 	return 0;
 }
-
