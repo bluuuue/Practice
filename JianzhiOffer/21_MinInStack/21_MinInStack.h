@@ -11,4 +11,18 @@ public:
 
 	T& top(void);
 	const T& top(void) const;
+	
+	void push(const T& value);
+	void pop(void);
+	
+	const T& min(void) const;
+	
+	bool empty() const;
+	size_t size() const;
+	
+private:
+	std::stack<T> m_data;
+	std::stack<T> m_min;
+};
 
+tem
