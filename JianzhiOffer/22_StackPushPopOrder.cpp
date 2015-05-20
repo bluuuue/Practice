@@ -5,7 +5,7 @@ bool IsPopOrder(const int *pPush, const int *pPop, int nLength)
 {
 	bool bIsPopOrder = false;
 
-	if(pPush == NULL || pPop == NULL)
+	if(pPush == NULL || pPop == NULL || nLength <= 0)
 	{
 		return bIsPopOrder;
 	}
