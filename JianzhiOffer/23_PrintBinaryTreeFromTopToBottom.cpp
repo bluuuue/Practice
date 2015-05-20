@@ -62,6 +62,8 @@ int main()
 	BinaryTreeNode *biTree = NULL;
 	CreateBinaryTree(biTree);
 
+	PrintFromTopToBottom(biTree);
+
 	return 0;
 }
 
