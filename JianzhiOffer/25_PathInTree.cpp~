@@ -30,3 +30,26 @@ void CreateBinaryTree(BiTreePointer &pTreeRoot)
 	}
 }
 
+bool Equals22(std::vector<int> &path)
+{
+	if(path.empty())
+	{
+		return false;
+	}
+
+	int sum = 0;
+	for(std::vector<int>::iterator iter = path.begin();
+			iter != path.end(); ++iter)
+	{
+		sum += *iter;
+	}
+	
+	if(sum == 22)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
