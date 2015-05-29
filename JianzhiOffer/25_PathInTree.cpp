@@ -72,29 +72,24 @@ void PrintPath(std::vector<int> &path)
 
 void TraverseTree(BinaryTreeNode *root, std::vector<int> &vecRoute)
 {
-	if(root == NULL && vecRoute.empty())
-	{
-		return;
-	}
-	else if(root == NULL)
+	if(root == NULL)
 	{
 		return;
 	}
 	else
 	{
 		vecRoute.push_back(root->m_nValue);
-//		if(Equals22(vecRoute))
-//		{
-//			PrintPath(vecRoute);
-//		}
-		PrintPath(vecRoute);
+		if(Equals22(vecRoute))
+		{
+			PrintPath(vecRoute);
+		}
 	}
 
 	if(root->m_pLeft != NULL)
 	{
 		TraverseTree(root->m_pLeft, vecRoute);
 	}
-	else if(root->m_pRight != NULL)
+	if(root->m_pRight != NULL)
 	{
 		TraverseTree(root->m_pRight, vecRoute);
 	}
