@@ -65,8 +65,9 @@ void PrintPath(std::vector<int> &path)
 	for(std::vector<int>::iterator iter = path.begin();
 		iter != path.end(); ++iter)
 	{
-		std::cout << *iter << std::endl;
+		std::cout << *iter << "\t";
 	}
+	std::cout << std::endl;
 }
 
 void TraverseTree(BinaryTreeNode *root, std::vector<int> &vecRoute)
@@ -77,16 +78,16 @@ void TraverseTree(BinaryTreeNode *root, std::vector<int> &vecRoute)
 	}
 	else if(root == NULL)
 	{
-		vecRoute.pop_back();
 		return;
 	}
 	else
 	{
 		vecRoute.push_back(root->m_nValue);
-		if(Equals22(vecRoute))
-		{
-			PrintPath(vecRoute);
-		}
+//		if(Equals22(vecRoute))
+//		{
+//			PrintPath(vecRoute);
+//		}
+		PrintPath(vecRoute);
 	}
 
 	if(root->m_pLeft != NULL)
@@ -97,6 +98,7 @@ void TraverseTree(BinaryTreeNode *root, std::vector<int> &vecRoute)
 	{
 		TraverseTree(root->m_pRight, vecRoute);
 	}
+	vecRoute.pop_back();
 }
 
 void PrintRightPath(BiTreePointer pRoot)
