@@ -1,29 +1,47 @@
 #include <iostream>
 
 //awkward solution
-struct ComplexListNode
+typedef struct ComplexListNode
 {
 	int					m_nValue;
 	ComplexListNode*	m_pNext;
 	ComplexListNode*	m_pSibling;
-};
+}*ComplexListNodePointer;
 
-void CreateComplexList(ComplexListNode *CList)
+void CreateList(ComplexListNodePointer &CList)
+{
+	ComplexListNode *pListTemp = new ComplexListNode();
+
+	int nInputValue = 0;
+	std::cin >> nInputValue;
+	if(nInputValue == 0)
+	{
+		pListTemp = NULL;
+		return;
+	}
+
+	pListTemp->m_nValue = nInputValue;
+	CreateList(pListTemp->m_pNext);
+	CList = pListTemp;
+}
+
+void CreateComplexList(ComplexListNodePointer &CList)
 {
 	if(CList != NULL)
 	{
 		return;
 	}
 
-	int nInputValue = 0;
-	std::cin >> nInputValue;
-	if(nInputValue == 0)
-	{
-		CList = NULL;
-		return;
-	}
-
-	CList->m_nValue = nInputValue;
-	CreateComplexList(CList->m_pNext);
-
+	CreateList(CList);
 }
+
+
+
+int main()
+{
+	ComplexListNode *pList = NULL;
+	CreateComplexList(pList);
+
+	return 0;
+}
+
