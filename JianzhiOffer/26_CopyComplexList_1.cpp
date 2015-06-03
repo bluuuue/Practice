@@ -57,6 +57,39 @@ void CreateComplexList(ComplexListNodePointer &CList)
 	AddSecondPointer(CList, 5);
 }
 
+void PrintComplexList(ComplexListNode *list)
+{
+	if(list == NULL)
+	{
+		return;
+	}
+	
+	std::cout << "The first series: " << std::endl;
+	ComplexListNode *pIndex1 = list;
+	while(pIndex1 != NULL)
+	{
+		std::cout << pIndex1->m_nValue << "\t";
+		pIndex1 = pIndex1->m_pNext;
+	}
+	std::cout << std::endl;
+
+	std::cout << "The second series: " << std::endl;
+	ComplexListNode *pIndex2 = list;
+	while(pIndex2 != NULL)
+	{
+		if(pIndex2->m_pSibling != NULL)
+		{
+			std::cout << pIndex2->m_pSibling->m_nValue << "\t";
+		}
+		else
+		{
+			std::cout << "0\t";
+		}
+		pIndex2 = pIndex2->m_pNext;
+	}
+	std::cout << std::endl;
+}
+
 ComplexListNode* CopyList(ComplexListNode *CList)
 {
 	ComplexListNode *pList = NULL;
@@ -72,12 +105,50 @@ ComplexListNode* CopyList(ComplexListNode *CList)
 	while(pIndex != NULL)
 	{
 		pList->m_nValue = pIndex->m_nValue;
-		pList->m_pNext = new ComplexListNode();
-		pList = pList->m_pNext;
 		pIndex = pIndex->m_pNext;
+
+		if(pIndex != NULL)
+		{
+			pList->m_pNext = new ComplexListNode();
+			pList = pList->m_pNext;
+		}
+		
 	}
 
 	return pResult;
+}
+
+int FindSiblingNum(ComplexListNode *pList, int nNum)
+{
+	int nResult = 0;
+	if(pList == NULL || nNum <= 0)
+	{
+		return nResult;
+	}
+
+	//Count the length of list
+	int nLength = 0;
+	ComplexListNode *pCountIndex =  pList;
+	while(pCountIndex != NULL)
+	{
+		++nLength;
+		pCountIndex = pCountIndex->m_pNext;
+	}
+
+	//Find the position of sibling pointer
+	ComplexListNode *pIndex = pList;
+	int nIndex = 0;
+	while(pIndex != NULL)
+	{
+		++nIndex;
+		if(pIndex->m_nValue == nNum)
+		{
+			nResult = nIndex;
+		}
+		pIndex = pIndex->m_pNext;
+	}
+
+	return nResult;
 }
 
 void CopySecondPointer(ComplexListNode *srcList, ComplexListNodePointer &dstList)
@@ -90,9 +161,35 @@ void CopySecondPointer(ComplexListNode *srcList, ComplexListNodePointer &dstList
 	ComplexListNode *pSrcIndex = srcList;
 	ComplexListNode *pDstIndex = dstList;
 
-	while (pSrcIndex != NULL)
-	{
+	int nSiblingSeries = 0;
 
+	while (pSrcIndex != NULL && pDstIndex != NULL)
+	{
+		if(pSrcIndex->m_pSibling != NULL)
+		{
+			nSiblingSeries = FindSiblingNum(srcList, pSrcIndex->m_pSibling->m_nValue);
+		}
+		else
+		{
+			nSiblingSeries = 0;
+		}
+
+		if(nSiblingSeries != 0)
+		{
+			ComplexListNode *pTempIndex = dstList;
+			while(--nSiblingSeries)
+			{
+				pTempIndex = pTempIndex->m_pNext;
+			}
+			pDstIndex->m_pSibling = pTempIndex;
+		}
+		else
+		{
+			pDstIndex->m_pSibling = NULL;
+		}
+
+		pSrcIndex = pSrcIndex->m_pNext;
+		pDstIndex = pDstIndex->m_pNext;
 	}
 }
 
@@ -115,9 +212,11 @@ int main()
 {
 	ComplexListNode *pList = NULL;
 	CreateComplexList(pList);
+	PrintComplexList(pList);
 
 	ComplexListNode *pCopiedList = NULL;
 	pCopiedList = CloneComplexList(pList);
+	PrintComplexList(pCopiedList);
 	return 0;
 }
 
