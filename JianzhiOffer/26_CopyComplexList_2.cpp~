@@ -122,26 +122,7 @@ void ConnectSiblingNodes(ComplexListNode *pHead)
 ComplexListNode* ReconnectNodes(ComplexListNode *pHead)
 {
 	ComplexListNode *pNode = pHead;
-	ComplexListNode *pClonedHead = NULL;
-	ComplexListNode *pClonedNode = NULL;
-
-	if(pNode != NULL)
-	{
-		pClonedHead = pNode->m_pNext;
-		pClonedNode = pClonedHead;
-		pNode->m_pNext = pClonedNode->m_pNext;
-		pNode = pNode->m_pNext;
-	}
-
-	while(pNode != NULL)
-	{
-		pClonedNode->m_pNext = pNode->m_pNext;
-		pClonedNode = pClonedNode->m_pNext;
-		pNode->m_pNext = pClonedNode->m_pNext;
-		pNode = pNode->m_pNext;
-	}
-
-	return pClonedHead;
+	return pNode;
 }
 
 ComplexListNode* CloneComplexList(ComplexListNode *pSrcList)
@@ -154,7 +135,7 @@ ComplexListNode* CloneComplexList(ComplexListNode *pSrcList)
 
 	CloneNodes(pSrcList);
 	ConnectSiblingNodes(pSrcList);
-	pResult = ReconnectNodes(pSrcList);
+	PrintComplexList(pSrcList);
 
 	return pResult;
 }
@@ -167,8 +148,8 @@ int main()
 
 	ComplexListNode *pCopiedList = NULL;
 	pCopiedList = CloneComplexList(pList);
-	PrintComplexList(pList);
 	PrintComplexList(pCopiedList);
+	PrintComplexList(pList);
 	return 0;
 }
 
