@@ -2,6 +2,7 @@
 
 void CreateBinaryTree(BiTreePointer &pTreeRoot)
 {
+	//preorder input
 	if(pTreeRoot != NULL)
 	{
 		return ;

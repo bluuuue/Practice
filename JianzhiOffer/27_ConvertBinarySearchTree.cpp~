@@ -1,9 +1,6 @@
 #include <iostream>
 #include "BinaryTree.h"
 
-//void CreateBinaryTree(BiTreePointer &pTreeRoot);
-//void PrintBinaryTree(BinaryTreeNode *pRoot);
-
 int main()
 {
 	BinaryTreeNode *pRoot = NULL;
