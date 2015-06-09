@@ -8,6 +8,10 @@ int MoreThanHalfNum1(int* num, int nLength)
     {
         return -1;
     }
+    else if (nLength == 1)
+    {
+       return num[0];
+    } 
 
     std::map<int, int> mapHash;
     for (int nIndex = 0; nIndex != nLength; ++nIndex)
@@ -22,13 +26,12 @@ int MoreThanHalfNum1(int* num, int nLength)
             mapHash.insert(std::pair<int, int>(*(num + nIndex), ++mapHash[*(num + nIndex)] ));
             if (mapHash[*(num + nIndex)] > nLength / 2)
             {
-                std::cout << *(num + nIndex) << std::endl;
-                break;
+                return *(num + nIndex);
             }
         }
     }
 
-    return 0;
+    return -1;
 }
 
 bool CheckMoreThanHalf(int *numbers, int length, int num)
@@ -81,7 +84,6 @@ int MoreThanHalfNum2(int *num , int nLength)
     {
         result = 0;
     }
-    std::cout << result << std::endl;
 
     return result;    
 }
@@ -89,18 +91,21 @@ int MoreThanHalfNum2(int *num , int nLength)
 int main()
 {
     int num[9] = {1, 2, 3, 2, 2, 2, 5, 4, 2};
+    int num2[1] = {1};
 
     clock_t tStart1, tStart2, tFinish1, tFinish2;
     tStart1 = clock();
 
-    MoreThanHalfNum1(num, 9);
+    std::cout << MoreThanHalfNum1(num, 9) << std::endl;
+    std::cout << MoreThanHalfNum1(num2, 1) << std::endl;
 
     tFinish1 = clock();
     std::cout << "Method 1 time consume: " << (tFinish1 - tStart1) << "us." << std::endl;
 
     tStart2 = clock();
 
-    MoreThanHalfNum2(num, 9);
+    std::cout << MoreThanHalfNum2(num, 9) << std::endl;
+    std::cout << MoreThanHalfNum2(num2, 1) << std::endl;
 
     tFinish2 = clock();
 
