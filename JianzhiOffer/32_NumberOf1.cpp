@@ -1,19 +1,49 @@
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <algorithm>
 
-int GetNumberOf1(int n)
+void ConvertIntToString(const int nNum, std::string &strString)
+{
+    if (nNum < 0)
+    {
+        return ;
+    }
+
+    int num = nNum;
+    std::stringstream ss;
+    
+    if (num == 0)
+    {
+        ss << 0;
+    }
+    else
+    {
+        while (num > 0)
+        {
+            ss << (num - (num / 10) * 10);
+            num /= 10;
+        }
+    }
+
+    strString = ss.str();
+    reverse(strString.begin(), strString.end());
+}
+
+
+int GetNumberOf1(const int n)
 {
 	if (n <= 0)
 	{
 		return 0;
 	}
 
-	int nDigits = 1;
-	int nTemp = n;
-	while (nTemp > 10)
-	{
-		++nDigits;
-		nTemp = nTemp / 10;
-	}
+    std::string str;
+    ConvertIntToString(n, str);
+
+	int nDigits = str.size();
+
+
 
 	return nDigits;
 }
