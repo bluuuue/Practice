@@ -23,15 +23,18 @@ int GetNumberOf1(const int n)
 		if (str[nIndex] > '1')
 		{
 			nNumberOf1 += nTemp1 * (static_cast<int>(n / nTemp2) + 1);
+			std::cout << nTemp1 * (static_cast<int>(n / nTemp2) + 1) << std::endl;
 		}
 		else if (str[nIndex] == '1')
 		{
 			nNumberOf1 += nTemp1 * static_cast<int>(n / nTemp2);
 			nNumberOf1 += static_cast<int>(n % nTemp1) + 1;
+			std::cout << nTemp1 * static_cast<int>(n / nTemp2) +  static_cast<int>(n % nTemp1) + 1 << std::endl;
 		}
 		else if (str[nIndex] == '0')
 		{
 			nNumberOf1 += nTemp1 * static_cast<int>(n / nTemp2);
+			std::cout << nTemp1 * static_cast<int>(n / nTemp2); 
 		}
 	}
 
