@@ -1,7 +1,7 @@
 #include "IntToStr.h"
 #include <iostream>
 #include <string>
-#include <math>
+#include <math.h>
 
 int GetNumberOf1(const int n)
 {
@@ -18,23 +18,29 @@ int GetNumberOf1(const int n)
 	int nNumberOf1 = 0;
 	for (int nIndex = 0; nIndex != nDigits; ++nIndex)
 	{
+		int nTemp1 = pow(10, nDigits - 1 - nIndex); 
+		int nTemp2 = pow(10, nDigits - nIndex); 
 		if (str[nIndex] > '1')
 		{
-			nNumberOf1 += pow(10, nDigits - 1 - nIndex);
+			nNumberOf1 += nTemp1 * (static_cast<int>(n / nTemp2) + 1);
 		}
 		else if (str[nIndex] == '1')
 		{
+			nNumberOf1 += nTemp1 * static_cast<int>(n / nTemp2);
+			nNumberOf1 += static_cast<int>(n % nTemp1) + 1;
+		}
+		else if (str[nIndex] == '0')
+		{
+			nNumberOf1 += nTemp1 * static_cast<int>(n / nTemp2);
+		}
+	}
 
-
-
-
-
-	return nDigits;
+	return nNumberOf1;
 }
 
 int main()
 {
-	std::cout << "The number of 1 is: " << GetNumberOf1(12345) << std::endl;
+	std::cout << "The number of 1 is: " << GetNumberOf1(21345) << std::endl;
 
 	return 0;
 }
