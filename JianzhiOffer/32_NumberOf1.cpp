@@ -41,7 +41,10 @@ int GetNumberOf1(const int n)
 
 int main()
 {
-	std::cout << "The number of 1 is: " << GetNumberOf1(21345) << std::endl;
+	std::cout << "The number of 1 in 21345 is: " << GetNumberOf1(21345) << std::endl;
+	std::cout << "The number of 1 in 0 is: " << GetNumberOf1(0) << std::endl;
+	std::cout << "The number of 1 in 1 is: " << GetNumberOf1(1) << std::endl;
+	std::cout << "The number of 1 in 99 is: " << GetNumberOf1(99) << std::endl;
 
 	return 0;
 }
