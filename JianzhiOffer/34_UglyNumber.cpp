@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 bool IsUglyNumber(const unsigned int num)
 {
@@ -52,20 +53,20 @@ unsigned int GetUglyNumber(int nSeries)
 
 int main()
 {
-	clock_t tStart1, tStart2, tEnd1, tEnd2;
+	//clock_t tStart1, tStart2, tEnd1, tEnd2;
 	int n = 1500;
 
-	tStart1 = clock();
+	//tStart1 = clock();
 	std::cout << "The low effective way: " << std::endl;
-	std::cout << "	The " << n << "th ugly number is: " << GetUglyNumber(n) << std::endl;
-	tEnd1 = clock();
-	std::cout << "	Time consume: " << tEnd1 - tStart1 << std::endl;
+	std::cout << "  The " << n << "th ugly number is: " << GetUglyNumber(n) << std::endl;
+	//tEnd1 = clock();
+	//std::cout << "	Time consume: " << tEnd1 - tStart1 << std::endl;
 
-	tStart2 = clock();
+	//tStart2 = clock();
 	std::cout << "The high effective way: " << std::endl;
 
-	tEnd2 = clock();
-	std::cout << "	Time consume: " << tEnd2 - tStart2 << std::endl;
+	//tEnd2 = clock();
+	//std::cout << "	Time consume: " << tEnd2 - tStart2 << std::endl;
 	
 	return 0;
 }
