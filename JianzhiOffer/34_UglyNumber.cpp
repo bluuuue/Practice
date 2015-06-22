@@ -102,11 +102,11 @@ unsigned int GetUglyNumberHighEffective(int nSeries)
 int main()
 {
 	clock_t tStart1, tStart2, tEnd1, tEnd2;
-	int n = 16;
+	int n = 1500;
 
 	tStart1 = clock();
 	std::cout << "The low effective way: " << std::endl;
-	std::cout << "  The " << n << "th ugly number is: " << GetUglyNumberLowEffective(n) << std::endl;
+	//std::cout << "  The " << n << "th ugly number is: " << GetUglyNumberLowEffective(n) << std::endl;
 	tEnd1 = clock();
 	std::cout << "	Time consume: " << tEnd1 - tStart1 << std::endl;
 
