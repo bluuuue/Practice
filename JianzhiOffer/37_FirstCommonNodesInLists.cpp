@@ -113,7 +113,6 @@ int main()
     ListNode *pHeadAIndexA = pHeadA;
     ListNode *pHeadBIndexB = pHeadB;
     int nCountA = 4;
-    int nCountB = 3;
     while (nCountA--)
     {
         pHeadAIndexA = pHeadAIndexA->m_pNext;
@@ -125,6 +124,8 @@ int main()
     pHeadBIndexB->m_pNext = pHeadAIndexA;
     PrintList(pHeadB);
 
+    ListNode *pCommonNode = GetCommonNodes(pHeadA, pHeadB);
+    PrintList(pCommonNode);
 
     return 0;
 }
