@@ -36,3 +36,21 @@ void PrintBinaryTree(BinaryTreeNode *pRoot)
 	PrintBinaryTree(pRoot->m_pLeft);
 	PrintBinaryTree(pRoot->m_pRight);
 }
+
+bool PrintTree(BinaryTreeNode *pRoot, int nLayer)
+{
+    if(pRoot==NULL)
+    {
+        return false;
+    }
+
+    PrintTree(pRoot->m_pRight,nLayer+3);
+    for(int i = 0; i < nLayer; i++)
+    {
+        printf(" ");
+    }
+    printf("%d\n",pRoot->m_nValue);
+    PrintTree(pRoot->m_pLeft, nLayer + 3);
+
+    return true;
+}

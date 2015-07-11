@@ -14,4 +14,6 @@ void CreateBinaryTree(BiTreePointer &pTreeRoot);
 
 void PrintBinaryTree(BinaryTreeNode *pRoot);
 
+bool PrintTree(BinaryTreeNode *pRoot, int nLayer);
+
 #endif
