@@ -1,0 +1,13 @@
+#include <iostream>
+
+int Compare(const
+
+int MinNUmberOfArray(int data[], int nLength)
+{
+}
+
+int main()
+{
+
+    return 0;
+}
