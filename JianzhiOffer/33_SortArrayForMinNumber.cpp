@@ -53,5 +53,6 @@ int main()
 {
 	int data[3] = {3, 32, 321};
 	PrintMinNumberOfArray(data, 3);
-    return 0;
+	return 0;
 }
+
