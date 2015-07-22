@@ -47,9 +47,9 @@ bool PrintTree(BinaryTreeNode *pRoot, int nLayer)
     PrintTree(pRoot->m_pRight,nLayer+3);
     for(int i = 0; i < nLayer; i++)
     {
-        printf(" ");
+		std::cout << " ";
     }
-    printf("%d\n",pRoot->m_nValue);
+	std::cout << pRoot->m_nValue << std::endl;
     PrintTree(pRoot->m_pLeft, nLayer + 3);
 
     return true;
