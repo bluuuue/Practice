@@ -32,12 +32,24 @@ void Reverse(char *pA, char *pB)
 	while (pA < pB)
 	{
 		char cTemp = *pA;
-		*pB = *pA;
-		*pA = cTemp;
+		*pA = *pB;
+		*pB = cTemp;
 		++pA;
 		--pB;
 	}
 	return;
+}
+
+void PrintString(char *str)
+{
+    if ( str == NULL)
+        return;
+
+    char *pPrint = str;
+    while (*pPrint != '\0')
+        cout << *(pPrint++);
+    cout << endl;
+    return;
 }
 
 char* ReverseSentence(char *pData)
@@ -52,7 +64,7 @@ char* ReverseSentence(char *pData)
 	--pTail;
 
 	Reverse(pHead, pTail);
-	cout << *pData << endl;
+    //PrintString(pHead);
 
 	pTail = pHead;
 	while (*pHead != '\0')
@@ -79,7 +91,7 @@ int main()
 	//cout << ReverseSentence(test) << endl;
 	
 	char sentence[] = {"I am a student."};
-	cout << ReverseSentence(sentence);
+	cout << ReverseSentence(sentence) << endl;
 
 	return 0;
 }
