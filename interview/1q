@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+void FormatString(char str[], int nLength)
+{
+    if (str == NULL || nLength <= 0)
+        return;
+
+    int nStart = 0;
+    while(str[nStart] == ' ')
+        ++nStart;
+
+    int i = nStart;
+    int j = 0;
+    bool bBlankOccured = false;
+    for(; i < nLength; ++i)
+    {
+        cout << "i: " << i << endl;
+        if (str[i] == ' ')
+        {
+            if (!bBlankOccured)
+            {
+                bBlankOccured = true;
+                str[j] = ' ';
+                ++j;
+            }
+            cout << "before break: " << j << endl;
+            break;
+        }
+
+        bBlankOccured = false;
+        str[j] = str[i];
+        ++j;
+        cout << i << "\t" << nLength << endl;
+    }
+
+}
+
+void PrintString(char str[], int nLength)
+{
+    if (str == NULL || nLength <= 0)
+    {
+        return ;
+    }
+
+    for (int i = 0; i < nLength; ++i)
+    {
+        cout << str[i];
+    }
+    cout << endl;
+}
+
+int main()
+{
+    char sentence[21] = "  i am   a   boy.   ";
+    PrintString(sentence, 21);
+
+    FormatString(sentence, 21);
+
+    PrintString(sentence, 21);
+
+    return 0;
+} 
