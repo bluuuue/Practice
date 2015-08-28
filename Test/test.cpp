@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    size_t i = 0;
-    cout << (i - 1) << endl;
+    char x = 100;
+    cout << int(x) << endl;
     return 0;
 }
