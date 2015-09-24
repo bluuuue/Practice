@@ -1,26 +1,14 @@
 #include <stdio.h>
 
-
-char *GetStr()
-{
-    //char p[] = "abcde";
-    char *p = new char[10];
-    *p = 'c';
-    *(p + 1) = 'd';
-
-    printf("%s\n", p);
-    return p;
-}
-void GetStr2()
-{
-    char ss[] = "aaaaaaaaaaaaaaaaaaaaaa";
-}
+#define swap(a, b) (a = a^b, b = a^b, a = a^b)
 
 int main()
 {
-    char *p = GetStr();
-    printf("%s\n", p);
-    GetStr2();
-    printf("%s\n", p);
+    int a = 3;
+    int b = 4;
+
+    swap(a, b);
+    printf("%d\t%d\n",a,b);
+
     return 0;
 }

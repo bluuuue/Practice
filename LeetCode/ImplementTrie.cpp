@@ -7,9 +7,10 @@ class TrieNode {
 public:
     // Initialize your data structure here.
     TrieNode() {
-        
+       ->bWord = false;
     }
-    vector<string> trie;
+    bool->bWord;
+    TrieNode *next[256]; 
 };
 
 class Trie {
@@ -20,41 +21,45 @@ public:
 
     // Inserts a word into the trie.
     void insert(string word) {
-        root->trie.push_back(word);
+        int nSize = word.size();
+        if (nSize <= 0)
+            return;
+        TrieNode *p = root;
+        int i = 0;
+        while (i < nSize)
+        {
+            p->next[word[i]]->bWord = true;
+            p = &(p->next[word[i]]);
+            ++i;
+        }
     }
 
     // Returns if the word is in the trie.
     bool search(string word) {
-        bool bGot = false;
-        for (int i = 0; i < root->trie.size(); ++i)
+        int nSize = word.size();
+        if (nSize <= 0)
+            return false;
+        int i = 0;
+        TrieNode *p = root;
+        while(i < nSize)
         {
-            if (root->trie[i] == word)
-            {
-                bGot = true;
-                break;
-            }
+            if (p->next[word[i]]->bWord == false)
+                return false;
+            p = &(p->next[word[i]]);
+            ++i;
         }
-        return bGot;
+        for(i = 0; i < 256; ++i)
+        {
+            if (p->next[word[i]]->bWord == true)
+                return false;
+        }
+        return true;
     }
 
     // Returns if there is any word in the trie
     // that starts with the given prefix.
     bool startsWith(string prefix) {
-        bool bGot = false;
-        for (int i = 0; i < root->trie.size(); ++i)
-        {
-            int nPreLen = prefix.size();
-            if (root->trie[i].size() >= nPreLen)
-            {
-                string temp(root->trie[i], 0, nPreLen);
-                if (temp == prefix)
-                {
-                    bGot = true;
-                    break;
-                }
-            }
-        }
-        return bGot;
+                
     }
 
 private:
@@ -63,14 +68,7 @@ private:
 
 int main()
 {
-    Trie test;
-    test.insert("aaa");
-    test.insert("bbb");
-    test.insert("ccc");
-    test.insert("ddd");
-    cout << test.search("ccc") << endl;
-    cout << test.search("mcc") << endl;
-    cout << test.startsWith("c") << endl;
+    TrieNode test;
 
     return 0;
 }
