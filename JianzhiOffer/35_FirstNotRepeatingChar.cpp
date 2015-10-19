@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 char FirstNotRepeatingChar(char *pString)
 {
@@ -33,7 +34,7 @@ char FirstNotRepeatingChar(char *pString)
 int main()
 {
     char *pString = "sdlfjkoirsdlfnsdlfw;sfuweslfsdflsabaccdeff";
-    std::cout << "The first not repeating char is: " << FirstNotRepeatingChar(pString) << std::endl;
+    cout << "The first not repeating char is: " << FirstNotRepeatingChar(pString) << endl;
 
     return 0;
 }

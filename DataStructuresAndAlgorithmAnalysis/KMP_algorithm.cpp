@@ -88,12 +88,16 @@ int KMPSearch(char const *s, char const *p, int next[])
 int main()
 {
     char const *s = "bbc abcdab abcdabcdabde";
-    char const *p = "abcdabd";
+    //char const *p = "abcdabd";
+    char const *p = "ababcaabc";
     cout << ViolentMatch(s, p) << endl;
 
     int pLen = strlen(p);
     int *next = new int[pLen]; 
     GetNext(p, next);
+    for (int i = 0; i < pLen; i++)
+        cout << next[i];
+    cout << endl;
     cout << KMPSearch(s, p, next) << endl;
     
     delete next;
