@@ -1,36 +1,6 @@
+#include "BST.h"
 #include <iostream>
 using namespace std;
-
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-};
-
-class BST {
-public:
-    BST();
-    ~BST();
-    TreeNode* MakeEmpty(); 
-    TreeNode* FindValue(int value);
-    TreeNode* FindMaxValue();
-    TreeNode* FindMinValue();
-    void DeleteNode(int value);
-    void InsertValue(int value);
-    void InorderPrint();
-    void PreorderPrint();
-
-private:
-    TreeNode *root;
-    TreeNode *MakeEmptyTree(TreeNode *root);
-    TreeNode* Find(TreeNode *root, int value);
-    TreeNode* FindMax(TreeNode *root);
-    TreeNode* FindMin(TreeNode *root);
-    TreeNode* Insert(TreeNode *root, int value);
-    TreeNode* Delete(TreeNode *root, int value);
-    void InorderPrintTree(TreeNode *root);
-    void PreorderPrintTree(TreeNode *root);
-};
 
 BST::BST() {
     root = NULL; 
@@ -184,32 +154,4 @@ void BST::InorderPrintTree(TreeNode *root) {
     InorderPrintTree(root->left);
     cout << root->val << " ";
     InorderPrintTree(root->right);
-}
-
-int main() {
-    BST TempTree;
-    TempTree.InsertValue(16);
-    TempTree.InsertValue(18);
-    TempTree.InsertValue(8);
-    TempTree.InsertValue(12);
-    TempTree.InsertValue(11);
-    TempTree.InsertValue(14);
-    TempTree.InsertValue(9);
-    TempTree.InsertValue(10);
-    TempTree.InsertValue(4);
-    TempTree.InsertValue(2);
-    TempTree.InsertValue(6);
-    TempTree.InsertValue(5);
-    TempTree.FindValue(4);
-    TempTree.FindValue(7);
-    TempTree.FindMaxValue();
-    TempTree.FindMinValue();
-    TempTree.InorderPrint();
-    TempTree.PreorderPrint();
-
-    TempTree.DeleteNode(8);
-    TempTree.InorderPrint();
-    TempTree.PreorderPrint();
-
-    return 0;
 }

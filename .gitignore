@@ -1,0 +1,8 @@
+#ignore all ~file
+*.*~
+#ignore .o & .a file
+*.[oa]
+#ignore .exe file
+*.exe
+#ignore .out file
+*.out
