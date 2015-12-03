@@ -1,4 +1,4 @@
-#include "MergeSort.h"
+#include "QuickSort.h"
 #include <iostream>
 using namespace std;
 
@@ -8,7 +8,7 @@ int main() {
     int num[10] = {10, 13, 8, 29, 2, 23, 20, 3, 29, 1};
     cout << "The original array is: " << endl;
     PrintArray(num, 10);
-    MergeSort(num, 10);
+    QuickSort(num, 0, 9);
     cout << "The array after quick sort is: " << endl;
     PrintArray(num, 10);
     return 0;
