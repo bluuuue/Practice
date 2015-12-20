@@ -1,4 +1,5 @@
-#define NULL 0
+#include <iostreem>
+using namespace std;
 
 const int ALPHABET_SIZE = 26;
 class TrieNode {
