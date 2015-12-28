@@ -10,6 +10,7 @@
 #ifndef UI_SORTDIALOG_H
 #define UI_SORTDIALOG_H
 
+/*
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
@@ -22,7 +23,20 @@
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
 #include <QtGui/QSpacerItem>
-#include <QtGui/QVBoxLayout>
+#include <QtGui/QVBoxLayout>*/
+
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QComboBox>
+#include <QDialog>
+#include <QGridLayout>
+#include <QGroupBox>
+#include <QHeaderView>
+#include <QLabel>
+#include <QPushButton>
+#include <QSpacerItem>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
@@ -208,45 +222,45 @@ public:
 
     void retranslateUi(QDialog *SortDialog)
     {
-        SortDialog->setWindowTitle(QApplication::translate("SortDialog", "Sort", 0, QApplication::UnicodeUTF8));
-        primaryGroupBox->setTitle(QApplication::translate("SortDialog", "&Primary Key", 0, QApplication::UnicodeUTF8));
-        primaryColumnLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Column:</p></body></html>", 0, QApplication::UnicodeUTF8));
+        SortDialog->setWindowTitle(QApplication::translate("SortDialog", "Sort", 0));
+        primaryGroupBox->setTitle(QApplication::translate("SortDialog", "&Primary Key", 0));
+        primaryColumnLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Column:</p></body></html>", 0));
         primaryColumnCombo->clear();
         primaryColumnCombo->insertItems(0, QStringList()
-         << QApplication::translate("SortDialog", "None", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SortDialog", "None", 0)
         );
-        primaryOrderLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Order:</p></body></html>", 0, QApplication::UnicodeUTF8));
+        primaryOrderLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Order:</p></body></html>", 0));
         primaryOrderCombo->clear();
         primaryOrderCombo->insertItems(0, QStringList()
-         << QApplication::translate("SortDialog", "Ascending", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SortDialog", "Descending", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SortDialog", "Ascending", 0)
+         << QApplication::translate("SortDialog", "Descending", 0)
         );
-        okButton->setText(QApplication::translate("SortDialog", "OK", 0, QApplication::UnicodeUTF8));
-        cancelButton->setText(QApplication::translate("SortDialog", "Cancel", 0, QApplication::UnicodeUTF8));
-        moreButton->setText(QApplication::translate("SortDialog", "&More", 0, QApplication::UnicodeUTF8));
-        secondaryGroupBox->setTitle(QApplication::translate("SortDialog", "&Secondary Key", 0, QApplication::UnicodeUTF8));
-        secondaryColumnLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Column:</p></body></html>", 0, QApplication::UnicodeUTF8));
+        okButton->setText(QApplication::translate("SortDialog", "OK", 0));
+        cancelButton->setText(QApplication::translate("SortDialog", "Cancel", 0));
+        moreButton->setText(QApplication::translate("SortDialog", "&More", 0));
+        secondaryGroupBox->setTitle(QApplication::translate("SortDialog", "&Secondary Key", 0));
+        secondaryColumnLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Column:</p></body></html>", 0));
         secondaryColumnCombo->clear();
         secondaryColumnCombo->insertItems(0, QStringList()
-         << QApplication::translate("SortDialog", "None", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SortDialog", "None", 0)
         );
-        secondaryOrderLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Order:</p></body></html>", 0, QApplication::UnicodeUTF8));
+        secondaryOrderLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Order:</p></body></html>", 0));
         secondaryOrderCombo->clear();
         secondaryOrderCombo->insertItems(0, QStringList()
-         << QApplication::translate("SortDialog", "Ascending", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SortDialog", "Descending", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SortDialog", "Ascending", 0)
+         << QApplication::translate("SortDialog", "Descending", 0)
         );
-        tertiaryGroupBox->setTitle(QApplication::translate("SortDialog", "&Tertiary Key", 0, QApplication::UnicodeUTF8));
-        tertiaryColumnLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Column:</p></body></html>", 0, QApplication::UnicodeUTF8));
+        tertiaryGroupBox->setTitle(QApplication::translate("SortDialog", "&Tertiary Key", 0));
+        tertiaryColumnLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Column:</p></body></html>", 0));
         tertiaryColumnCombo->clear();
         tertiaryColumnCombo->insertItems(0, QStringList()
-         << QApplication::translate("SortDialog", "None", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SortDialog", "None", 0)
         );
-        tertiaryOrderLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Order:</p></body></html>", 0, QApplication::UnicodeUTF8));
+        tertiaryOrderLabel->setText(QApplication::translate("SortDialog", "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Order:</p></body></html>", 0));
         tertiaryOrderCombo->clear();
         tertiaryOrderCombo->insertItems(0, QStringList()
-         << QApplication::translate("SortDialog", "Ascending", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("SortDialog", "Descending", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("SortDialog", "Ascending", 0)
+         << QApplication::translate("SortDialog", "Descending", 0)
         );
     } // retranslateUi
 

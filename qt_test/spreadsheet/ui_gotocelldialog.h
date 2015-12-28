@@ -10,17 +10,28 @@
 #ifndef UI_GOTOCELLDIALOG_H
 #define UI_GOTOCELLDIALOG_H
 
-#include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QLineEdit>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+//#include <QtCore/QVariant>
+//#include <QtGui/QAction>
+//#include <QtGui/QApplication>
+//#include <QtGui/QButtonGroup>
+//#include <QtGui/QDialogButtonBox>
+//#include <QtGui/QHBoxLayout>
+//#include <QtGui/QHeaderView>
+//#include <QtGui/QLabel>
+//#include <QtGui/QLineEdit>
+//#include <QtGui/QVBoxLayout>
+//#include <QtGui/QWidget>
+
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QDialogButtonBox>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLineEdit>
+#include <QVBoxLayout>
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -73,8 +84,8 @@ public:
 
     void retranslateUi(QWidget *GoToCellDialog)
     {
-        GoToCellDialog->setWindowTitle(QApplication::translate("GoToCellDialog", "Go to Cell", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("GoToCellDialog", "&Cell Location:", 0, QApplication::UnicodeUTF8));
+        GoToCellDialog->setWindowTitle(QApplication::translate("GoToCellDialog", "Go to Cell", 0));
+        label->setText(QApplication::translate("GoToCellDialog", "&Cell Location:", 0));
     } // retranslateUi
 
 };

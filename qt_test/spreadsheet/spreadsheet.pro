@@ -1,4 +1,5 @@
 TEMPLATE      = app
+QT            += core gui widgets
 HEADERS       = cell.h \
                 finddialog.h \
                 gotocelldialog.h \

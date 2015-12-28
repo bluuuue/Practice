@@ -2,6 +2,7 @@
 #define GOTOCELLDIALOG_H
 
 #include <QDialog>
+#include <QPushButton>
 
 #include "ui_gotocelldialog.h"
 

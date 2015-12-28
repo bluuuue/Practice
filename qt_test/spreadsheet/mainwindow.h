@@ -7,6 +7,13 @@ class QAction;
 class QLabel;
 class FindDialog;
 class Spreadsheet;
+#include <QAction>
+#include <QLabel>
+#include <QFileDialog>
+#include <QMenu>
+#include <QToolBar>
+#include <QMenuBar>
+#include <QStatusBar>
 
 class MainWindow : public QMainWindow
 {
