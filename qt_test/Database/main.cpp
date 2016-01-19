@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QSplashScreen splash(pixmap);
     splash.show();
     QTest::qWait(3000);
-    if(!Create_Databse("mydb.db"))
+    if(!Create_Databse("mydb.mdb"))
     {
         return -1;
     }
