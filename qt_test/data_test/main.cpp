@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     //std::cout << "ads" << std::endl;
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE"); //添加数据库驱动
-    db.setDatabaseName("./test.db"); //数据库连接命名
+    db.setDatabaseName("test.db"); //数据库连接命名
     if(!db.open()) //打开数据库
     {
         return false;
