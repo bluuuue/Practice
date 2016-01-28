@@ -636,8 +636,8 @@ main.o: ../data_test/main.cpp ../data_test/mainwindow.h \
 		/Users/john/Qt5.5.1/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
 		/Users/john/Qt5.5.1/5.5/clang_64/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		/Users/john/Qt5.5.1/5.5/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h \
-		/Users/john/Qt5.5.1/5.5/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
-		/Users/john/Qt5.5.1/5.5/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
+		/Users/john/Qt5.5.1/5.5/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		/Users/john/Qt5.5.1/5.5/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../data_test/main.cpp
 
 mainwindow.o: ../data_test/mainwindow.cpp ../data_test/mainwindow.h \
