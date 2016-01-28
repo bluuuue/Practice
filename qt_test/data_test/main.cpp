@@ -18,18 +18,18 @@ int main(int argc, char *argv[])
     }
 
     QSqlQuery query; //以下执行相关QSL语句
-    /*
+
     query.exec("create table students(id int primary key,name varchar)");
     query.exec();
     //新建student表，id设置为主键，还有一个name项
     query.exec("insert into students values(1,'xiaogang')");
-    query.exec();
+
     query.exec("insert into students values(4,'xiaoling')");
-    query.exec();
+
     query.exec("insert into students values(3,'xiaohong')");
-    query.exec();
+
     //向表中插入3条记录
-    */
+
     query.exec("select id,name from students where id >= 2");
     //查找表中id >=2 的记录的id项和name项的值
     while(query.next())       //query.next()指向查找到的第一条记录，然后每次后移一条记录
